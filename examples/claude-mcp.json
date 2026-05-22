@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "mem0": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["$HOME/.mem0/mcp_bridge.py"],
+      "env": {
+        "MEM0_BASE_URL": "https://mem0.example.com",
+        "MEM0_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}

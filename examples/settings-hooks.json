@@ -1,0 +1,81 @@
+{
+  "SessionStart": [
+    {
+      "matcher": "startup|resume|compact",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "$HOME/.mem0/hooks/on_session_start.sh",
+          "statusMessage": "Loading mem0 context..."
+        }
+      ]
+    }
+  ],
+  "UserPromptSubmit": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "$HOME/.mem0/hooks/on_user_prompt.sh",
+          "timeout": 5
+        }
+      ]
+    }
+  ],
+  "PreToolUse": [
+    {
+      "matcher": "Write|Edit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "$HOME/.mem0/hooks/block_memory_write.sh"
+        }
+      ]
+    }
+  ],
+  "PostToolUse": [
+    {
+      "matcher": "Agent|WebSearch|WebFetch",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "$HOME/.mem0/hooks/on_post_research.sh",
+          "timeout": 5
+        }
+      ]
+    }
+  ],
+  "PreCompact": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "$HOME/.mem0/hooks/on_pre_compact.sh",
+          "statusMessage": "Preparing pre-compaction summary..."
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "$HOME/.mem0/hooks/on_stop.sh",
+          "timeout": 10
+        }
+      ]
+    }
+  ],
+  "TaskCompleted": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "$HOME/.mem0/hooks/on_task_completed.sh",
+          "timeout": 10
+        }
+      ]
+    }
+  ]
+}
