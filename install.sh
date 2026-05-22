@@ -153,6 +153,16 @@ HOOKS_JSON=$(cat <<HOOKSEOF
           "command": "$MEM0_HOME/hooks/block_memory_write.sh"
         }
       ]
+    },
+    {
+      "matcher": "Bash|Read|Edit|Write|Agent",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "$MEM0_HOME/hooks/check_mem0_save_cadence.sh",
+          "timeout": 3
+        }
+      ]
     }
   ],
   "PostToolUse": [
@@ -163,6 +173,16 @@ HOOKS_JSON=$(cat <<HOOKSEOF
           "type": "command",
           "command": "$MEM0_HOME/hooks/on_post_research.sh",
           "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "mcp__mem0__add_memory|mcp__mem0__update_memory",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "$MEM0_HOME/hooks/reset_mem0_counter.sh",
+          "timeout": 3
         }
       ]
     }

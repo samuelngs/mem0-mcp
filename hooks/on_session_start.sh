@@ -16,8 +16,9 @@ fi
 
 . "$HOOKS_DIR/_identity.sh"
 
-# Reset debounce state for new session
+# Reset debounce state and tool call counter for new session
 rm -f "$HOME/.mem0/.last_protocol_inject" 2>/dev/null || true
+echo "0" > "$HOME/.mem0/.tool_call_count" 2>/dev/null || true
 
 INPUT=$(cat)
 SOURCE=$(echo "$INPUT" | jq -r '.source // "startup"' 2>/dev/null || echo "startup")
