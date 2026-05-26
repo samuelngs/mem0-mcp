@@ -31,6 +31,16 @@
           "command": "$HOME/.mem0/hooks/block_memory_write.sh"
         }
       ]
+    },
+    {
+      "matcher": "Bash|Read|Edit|Write|Agent",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "$HOME/.mem0/hooks/check_mem0_save_cadence.sh",
+          "timeout": 3
+        }
+      ]
     }
   ],
   "PostToolUse": [
@@ -41,6 +51,16 @@
           "type": "command",
           "command": "$HOME/.mem0/hooks/on_post_research.sh",
           "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "mcp__mem0__add_memory|mcp__mem0__update_memory",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "$HOME/.mem0/hooks/reset_mem0_counter.sh",
+          "timeout": 3
         }
       ]
     }
