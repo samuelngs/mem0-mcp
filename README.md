@@ -51,8 +51,8 @@ The hooks enforce 8 structured memory types:
 ## Quick Install
 
 ```bash
-git clone https://github.com/samuelngs/mem0-integration.git
-cd mem0-integration
+git clone https://github.com/samuelngs/mem0-mcp.git
+cd mem0-mcp
 
 export MEM0_BASE_URL=https://mem0.example.com
 export MEM0_API_KEY=your-api-key
