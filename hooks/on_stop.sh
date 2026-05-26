@@ -14,7 +14,7 @@ if [ "$STOP_HOOK_ACTIVE" = "true" ]; then
   exit 0
 fi
 
-cat <<EOF
+REASON=$(cat <<EOF
 ## Session End — Structured Memory Save Required
 
 Before finishing, you MUST store a structured outcome using add_memory with \`infer=False\`:
@@ -61,5 +61,12 @@ add_memory(
 If nothing notable happened this session, skip. Only store genuinely useful context.
 Always include \`project_id: "$MEM0_PROJECT_ID"\` in metadata.
 EOF
+)
+
+jq -n --arg reason "$REASON" '{
+  "continue": true,
+  "decision": "block",
+  "reason": $reason
+}'
 
 exit 0
